@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TabGroup : MonoBehaviour
+/*public class TabGroup : MonoBehaviour
 {
     [HideInInspector]
-    public List<TabButton> tabButtons;
+    public List<> tabButtons;
     [HideInInspector]
-    public TabButton selectedTab;
+    public  selectedTab;
     public List<GameObject> menus;
     public Color nonActiveColor;
     public Color activeColor;
@@ -20,11 +20,11 @@ public class TabGroup : MonoBehaviour
         menus.Single(menu => menu.name == "Overview").SetActive(true);
     }
 
-    public void Subscribe(TabButton button)
+    public void Subscribe( button)
     {
         if (tabButtons == null)
         {
-            tabButtons = new List<TabButton>();
+            tabButtons = new List<>();
         }
 
         tabButtons.Add(button);
@@ -67,4 +67,4 @@ public class TabGroup : MonoBehaviour
             }
         }
     }
-}
+}*/

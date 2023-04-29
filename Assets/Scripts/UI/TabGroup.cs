@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class TabGroup : MonoBehaviour
 {
+    [HideInInspector]
     public List<TabButton> tabButtons;
-    public List<GameObject> menus;
+    [HideInInspector]
     public TabButton selectedTab;
+    public List<GameObject> menus;
+    public Color nonActiveColor;
+    public Color activeColor;
+    
 
     private void Start()
     {
         ResetTabs();
+        tabButtons.ForEach(button => button.setBackground(nonActiveColor));
         menus.Single(menu => menu.name == "Overview").SetActive(true);
     }
 
@@ -35,6 +41,7 @@ public class TabGroup : MonoBehaviour
         foreach(GameObject menu in menus)
         {
             menu.SetActive(false);
+            tabButtons.ForEach(button => button.setBackground(nonActiveColor));
         }
     }
 
@@ -51,10 +58,12 @@ public class TabGroup : MonoBehaviour
                     break;
                 }
                 menu.SetActive(true);
+                tabButtons.Single(button => button.name == menu.name).setBackground(activeColor);
             }
             else
             {
                 menu.SetActive(false);
+                tabButtons.Single(button => button.name == menu.name).setBackground(nonActiveColor);
             }
         }
     }

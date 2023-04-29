@@ -15,4 +15,9 @@ public class TabButton : MonoBehaviour, IPointerClickHandler
     {
         tabGroup.OnTabSelected(this);
     }
+
+    public void setBackground(Color background)
+    {
+        this.GetComponent<Text>().color = background;
+    }
 }

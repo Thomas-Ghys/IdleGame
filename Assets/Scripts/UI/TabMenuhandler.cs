@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TabMenuhandler : MonoBehaviour
 {
@@ -50,6 +51,10 @@ public class TabMenuhandler : MonoBehaviour
                 {
                     ResetStates();
                     gameMenus.Single(menu => menu.name == overViewMenu.name).SetActive(true);
+                    if (EventSystem.current.currentSelectedGameObject == menuButtons.Single(button => button.name == menu.name).gameObject)
+                    {
+                        EventSystem.current.SetSelectedGameObject(null);
+                    }
                     break;
                 }
                 menu.SetActive(true);

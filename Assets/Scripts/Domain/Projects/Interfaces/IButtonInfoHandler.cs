@@ -1,4 +1,7 @@
-public interface IButtonInfoHandler
+namespace Domain.Projects.Interfaces
 {
-    IButtonInfo ButtonInfo { get; set; }
+    public interface IButtonInfoHandler
+    {
+        IButtonInfo ButtonInfo { get; set; }
+    }
 }

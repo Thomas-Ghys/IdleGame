@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DevPageNewProjectUIHandler : MonoBehaviour
+namespace UI.DevPage.NewProjectsPage
 {
-    [SerializeField]
-    private GameObject content;
+    public class DevPageNewProjectUIHandler : MonoBehaviour
+    {
+        [SerializeField]
+        private GameObject content;
     
 
-    void Start()
-    {
+        void Start()
+        {
         
-    }
+        }
 
-    void Update()
-    {
+        void Update()
+        {
         
+        }
     }
 }

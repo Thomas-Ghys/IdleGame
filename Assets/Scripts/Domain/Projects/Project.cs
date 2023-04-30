@@ -1,17 +1,21 @@
+using Domain.Projects.Interfaces;
 using UnityEngine;
 
-public class Project: IButtonInfo
+namespace Domain.Projects
 {
-    public Project(string name, int requirementCurrent, int requirementTotal, Color color)
+    public class Project: IButtonInfo
     {
-        Name = name;
-        RequirementCurrent = requirementCurrent;
-        RequirementTotal = requirementTotal;
-        Color = color;
-    }
+        public Project(string name, int requirementCurrent, int requirementTotal, Color color)
+        {
+            Name = name;
+            RequirementCurrent = requirementCurrent;
+            RequirementTotal = requirementTotal;
+            Color = color;
+        }
     
-    public string Name { get; set; }
-    public int RequirementCurrent { get; set; }
-    public int RequirementTotal { get; set; }
-    public Color Color { get; set; }
+        public string Name { get; set; }
+        public int RequirementCurrent { get; set; }
+        public int RequirementTotal { get; set; }
+        public Color Color { get; set; }
+    }
 }

@@ -8,6 +8,7 @@ namespace UI.DevPage.NewProjectsPage
 {
     public class ProjectButtonHandler : MonoBehaviour, IButtonInfoHandler
     {
+        // TODO: Find a way to collapse all things when the DevPageHandler wants it so.
         private IButtonInfo _buttonInfo;
         private Button _button;
         private TextMeshProUGUI _text;

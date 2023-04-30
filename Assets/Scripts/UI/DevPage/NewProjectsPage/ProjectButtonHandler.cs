@@ -12,7 +12,7 @@ namespace UI.DevPage.NewProjectsPage
         private Button _button;
         private TextMeshProUGUI _text;
 
-        public IPageHandler DevPageHandler { get; private set; }
+        public IPageHandler PageHandler { get; private set; }
         
         public IButtonInfo ButtonInfo
         {
@@ -33,13 +33,13 @@ namespace UI.DevPage.NewProjectsPage
 
         public void StartProject()
         {
-            DevPageHandler.InvokeButton(_buttonInfo);
+            PageHandler.InvokeButton(_buttonInfo);
         }
 
         public void Initialize(IButtonInfo buttonInfo, DevPageHandler devPageHandler)
         {
             ButtonInfo = buttonInfo;
-            DevPageHandler = devPageHandler;
+            PageHandler = devPageHandler;
         }
 
         private void SetButtonAttributes()

@@ -6,9 +6,7 @@ namespace Domain.Projects.Interfaces
     public interface IButtonInfoHandler
     {
         IButtonInfo ButtonInfo { get; }
-        
-        // TODO: Sambar: Later, make this generic so other handlers can be used to reference back.
-        IPageHandler DevPageHandler { get; }
+        IPageHandler PageHandler { get; }
 
         void Initialize(IButtonInfo buttonInfo, DevPageHandler devPageHandler);
     }

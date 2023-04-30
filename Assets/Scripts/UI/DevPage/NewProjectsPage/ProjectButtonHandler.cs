@@ -31,18 +31,6 @@ namespace UI.DevPage.NewProjectsPage
             _text = textObject.GetComponent<TextMeshProUGUI>();
         }
 
-        // TODO: Sambar: Move this to it's own script so it can be separate from the proper logic
-        public void Expand()
-        {
-            
-        }
-
-        // TODO: Sambar: Move this to it's own script so it can be separate from the proper logic
-        public void Collapse()
-        {
-            
-        }
-        
         public void StartProject()
         {
             PageHandler.InvokeButton(_buttonInfo);

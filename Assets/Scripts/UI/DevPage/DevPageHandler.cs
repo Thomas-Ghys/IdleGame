@@ -48,6 +48,12 @@ namespace UI.DevPage
             Debug.Log("Starting Project: " + project.Name);
         }
         
+        public void CollapseAllPanels()
+        {
+            Debug.Log("All panels should be collapsed here.");
+            
+        } 
+        
         /// <summary>
         /// The function will set the default state, meaning all the pages will be disabled except for the main page.
         /// </summary>

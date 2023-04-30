@@ -42,6 +42,12 @@ namespace UI.DevPage.NewProjectsPage
             PageHandler = devPageHandler;
         }
 
+        public void CollapseAll()
+        {
+            PageHandler.CollapseAllPanels();
+            
+        }
+
         private void SetButtonAttributes()
         {
             _text.text = ButtonInfo.Name;

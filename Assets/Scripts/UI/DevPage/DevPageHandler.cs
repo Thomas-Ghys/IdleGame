@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Projects;
+using Domain.Projects.Interfaces;
 using UI.DevPage.NewProjectsPage;
+using UI.Global;
 using UnityEngine;
 
 namespace UI.DevPage
 {
-    public class DevPageHandler : MonoBehaviour
+    public class DevPageHandler : MonoBehaviour, IPageHandler
     {
         // This is temporary, This should be set somewhere else. 
         private List<Project> _possibleProjects = new ()
@@ -41,6 +43,11 @@ namespace UI.DevPage
             targetPage.SetActive(true);
         }
 
+        public void InvokeButton(IButtonInfo project)
+        {
+            Debug.Log("Starting Project: " + project.Name);
+        }
+        
         /// <summary>
         /// The function will set the default state, meaning all the pages will be disabled except for the main page.
         /// </summary>

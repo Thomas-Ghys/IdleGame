@@ -9077,8 +9077,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707d8919c7ae43ebb18449b2b858dc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scrollView: {fileID: 2143850182}
-  _buttonPrefab: {fileID: 8787503009763530825, guid: 3e78c81af6ab9fa4498a61215a0ceae2, type: 3}
+  scrollView: {fileID: 2143850182}
+  buttonPrefab: {fileID: 8787503009763530825, guid: 3e78c81af6ab9fa4498a61215a0ceae2, type: 3}
 --- !u!1 &2087091517
 GameObject:
   m_ObjectHideFlags: 0
@@ -9568,6 +9568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697fabb9a93641af85420e946d66b802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DevPageHandler: {fileID: 2070789698}
 --- !u!1 &2144886724
 GameObject:
   m_ObjectHideFlags: 0

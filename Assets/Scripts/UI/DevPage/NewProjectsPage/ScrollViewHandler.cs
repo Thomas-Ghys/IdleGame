@@ -8,6 +8,8 @@ namespace UI.DevPage.NewProjectsPage
 {
     public class ScrollViewHandler : MonoBehaviour
     {
+        public DevPageHandler DevPageHandler;
+        
         private GameObject _content;
         private readonly List<GameObject> _buttons = new();
 
@@ -54,7 +56,7 @@ namespace UI.DevPage.NewProjectsPage
         private GameObject AddButton(IButtonInfo buttonInfo, GameObject buttonPrefab)
         {
             var newProjectButton = Instantiate(buttonPrefab, _content.transform, false);
-            newProjectButton.GetComponent<IButtonInfoHandler>().ButtonInfo = buttonInfo;
+            newProjectButton.GetComponent<IButtonInfoHandler>().Initialize(buttonInfo, DevPageHandler);
             return newProjectButton;
         }
 

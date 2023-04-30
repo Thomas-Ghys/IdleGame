@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1596528748}
   m_HandleRect: {fileID: 1596528747}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4796,7 +4796,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1669864684}
   m_HandleRect: {fileID: 1669864683}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -9078,7 +9078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollView: {fileID: 2143850182}
-  buttonPrefab: {fileID: 8787503009763530825, guid: 3e78c81af6ab9fa4498a61215a0ceae2, type: 3}
+  buttonPrefab: {fileID: 3401328225553324454, guid: 6bbbc25e4ef72494b9d89f4a2c2d6dfa, type: 3}
 --- !u!1 &2087091517
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,7 +56,7 @@ namespace UI.DevPage.NewProjectsPage
         private GameObject AddButton(IButtonInfo buttonInfo, GameObject buttonPrefab)
         {
             var newProjectButton = Instantiate(buttonPrefab, _content.transform, false);
-            newProjectButton.GetComponent<IButtonInfoHandler>().Initialize(buttonInfo, DevPageHandler);
+            newProjectButton.GetComponentInChildren<IButtonInfoHandler>().Initialize(buttonInfo, DevPageHandler);
             return newProjectButton;
         }
 

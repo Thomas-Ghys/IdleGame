@@ -1,6 +1,7 @@
+using System;
+using Domain.Projects;
 using Domain.Projects.Interfaces;
 using TMPro;
-using UI.Global;
 using UI.Global.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,13 +10,16 @@ namespace UI.DevPage.NewProjectsPage
 {
     public class ProjectButtonHandler : MonoBehaviour, IButtonInfoHandler
     {
-        private IButtonInfo _buttonInfo;
+        private Project _buttonInfo;
         private Button _button;
         private TextMeshProUGUI _text;
 
+        [SerializeField] private Button startButton;
+        public static Action<Project> OnStartProject;
+
         public IPageHandler PageHandler { get; private set; }
-        
-        public IButtonInfo ButtonInfo
+
+        public Project ButtonInfo
         {
             get => _buttonInfo;
             private set
@@ -32,16 +36,13 @@ namespace UI.DevPage.NewProjectsPage
             _text = textObject.GetComponent<TextMeshProUGUI>();
         }
 
-        public void StartProject()
-        {
-            PageHandler.InvokeButton(_buttonInfo);
-        }
-
-        public void Initialize(IButtonInfo buttonInfo, DevPageHandler devPageHandler)
+        public void Initialize(Project buttonInfo, DevPageHandler devPageHandler)
         {
             gameObject.name += $" {buttonInfo.Name}";
             ButtonInfo = buttonInfo;
             PageHandler = devPageHandler;
+
+            startButton.GetComponent<Button>().onClick.AddListener(() => { OnStartProject.Invoke(buttonInfo); });
         }
 
         private void SetButtonAttributes()

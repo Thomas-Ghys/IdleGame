@@ -7,7 +7,6 @@ namespace UI.Global
 {
     public class PanelController : MonoBehaviour
     {
-        // public delegate void OnFocusDelegate();
         public static Action OnFocus;
 
         [SerializeField] private GameObject panel;

@@ -4,4 +4,9 @@ public static class Globals
     {
         public const string ApplicationName = "IdleGame";
     }
+
+    public static class Project
+    {
+        public const string RunningProjectsRoot = "RunningProjects";
+    }
 }

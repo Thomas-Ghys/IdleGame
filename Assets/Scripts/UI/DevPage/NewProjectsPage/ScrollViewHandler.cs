@@ -9,7 +9,7 @@ namespace UI.DevPage.NewProjectsPage
     public class ScrollViewHandler : MonoBehaviour
     {
         public DevPageHandler DevPageHandler;
-        
+
         private GameObject _content;
         private readonly List<GameObject> _buttons = new();
 
@@ -17,7 +17,8 @@ namespace UI.DevPage.NewProjectsPage
         {
             if (gameObject.GetComponent<ScrollRect>() == null)
             {
-                Debug.LogError($"This script ({nameof(ScrollViewHandler)}) is only allowed to be placed on scroll views");
+                Debug.LogError(
+                    $"This script ({nameof(ScrollViewHandler)}) is only allowed to be placed on scroll views");
             }
 
             _content = gameObject.transform.Find("Viewport")?.Find("Content")?.gameObject;
@@ -27,7 +28,7 @@ namespace UI.DevPage.NewProjectsPage
                                "This could be because the names of the \"Viewport\" or \"Content\" game objects have been changed.");
             }
         }
-    
+
         public List<GameObject> Buttons
         {
             get
@@ -53,7 +54,7 @@ namespace UI.DevPage.NewProjectsPage
             newButton.transform.SetAsLastSibling();
         }
 
-        private GameObject AddButton(IButtonInfo buttonInfo, GameObject buttonPrefab)
+        private GameObject AddButton(Project buttonInfo, GameObject buttonPrefab)
         {
             var newProjectButton = Instantiate(buttonPrefab, _content.transform, false);
             newProjectButton.GetComponentInChildren<IButtonInfoHandler>().Initialize(buttonInfo, DevPageHandler);

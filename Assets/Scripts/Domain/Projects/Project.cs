@@ -1,9 +1,8 @@
-using Domain.Projects.Interfaces;
 using UnityEngine;
 
 namespace Domain.Projects
 {
-    public class Project: IButtonInfo
+    public class Project
     {
         public Project(string name, int requirementCurrent, int requirementTotal, Color color)
         {

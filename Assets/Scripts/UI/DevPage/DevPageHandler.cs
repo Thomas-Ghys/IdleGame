@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Domain.Common;
 using Domain.Projects;
+using UI.DevPage.NewProjectsPage;
 using UI.Global;
 using UI.Global.Interfaces;
 using UnityEngine;
 
-namespace UI.DevPage.NewProjectsPage
+namespace UI.DevPage
 {
     public class DevPageHandler : MonoBehaviour, IPageHandler
     {
@@ -51,6 +52,10 @@ namespace UI.DevPage.NewProjectsPage
         {
             var rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
             var runningProjectsObject = rootObjects.SingleOrDefault(p => p.name == Globals.Project.RunningProjectsRoot);
+            if (runningProjectsObject == null)
+            {
+                Debug.LogError("The RunningProjects game object cannot be found.");
+            }
             runningProjectsObject ??= new GameObject
             {
                 name = Globals.Project.RunningProjectsRoot
@@ -62,7 +67,7 @@ namespace UI.DevPage.NewProjectsPage
 
         public void CollapseAllPanels()
         {
-            Debug.Log("All panels should be collapsed here.");
+            // Debug.Log("All panels should be collapsed here.");
         }
 
         /// <summary>
@@ -87,7 +92,7 @@ namespace UI.DevPage.NewProjectsPage
         private void EnableDelegates()
         {
             PanelController.OnFocus += CollapseAllPanels;
-            ProjectButtonHandler.OnStartProject += StartProjectManually;
+            NewProjectButtonHandler.OnStartProject += StartProjectManually;
         }
 
         /// <summary>
@@ -96,7 +101,7 @@ namespace UI.DevPage.NewProjectsPage
         private void DisableDelegates()
         {
             PanelController.OnFocus -= CollapseAllPanels;
-            ProjectButtonHandler.OnStartProject -= StartProjectManually;
+            NewProjectButtonHandler.OnStartProject -= StartProjectManually;
         }
     }
 }

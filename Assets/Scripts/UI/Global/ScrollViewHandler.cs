@@ -1,21 +1,24 @@
 using System.Collections.Generic;
 using Domain.Projects;
 using Domain.Projects.Interfaces;
+using UI.DevPage;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.DevPage.NewProjectsPage
+namespace UI.Global
 {
     public class ScrollViewHandler : MonoBehaviour
     {
         public DevPageHandler DevPageHandler;
 
         private GameObject _content;
+        private ScrollRect _scrollRect;
         private readonly List<GameObject> _buttons = new();
 
         private void Awake()
         {
-            if (gameObject.GetComponent<ScrollRect>() == null)
+            _scrollRect = gameObject.GetComponent<ScrollRect>();
+            if (_scrollRect == null)
             {
                 Debug.LogError(
                     $"This script ({nameof(ScrollViewHandler)}) is only allowed to be placed on scroll views");
@@ -29,7 +32,12 @@ namespace UI.DevPage.NewProjectsPage
             }
         }
 
-        public List<GameObject> Buttons
+        private void Start()
+        {
+            _scrollRect.scrollSensitivity = Globals.General.DefaultScrollingSensitivity;
+        }
+
+        private List<GameObject> Buttons
         {
             get
             {
@@ -57,7 +65,7 @@ namespace UI.DevPage.NewProjectsPage
         private GameObject AddButton(Project buttonInfo, GameObject buttonPrefab)
         {
             var newProjectButton = Instantiate(buttonPrefab, _content.transform, false);
-            newProjectButton.GetComponentInChildren<IButtonInfoHandler>().Initialize(buttonInfo, DevPageHandler);
+            newProjectButton.GetComponentInChildren<IButtonInfoHandler>()?.Initialize(buttonInfo, DevPageHandler);
             return newProjectButton;
         }
 

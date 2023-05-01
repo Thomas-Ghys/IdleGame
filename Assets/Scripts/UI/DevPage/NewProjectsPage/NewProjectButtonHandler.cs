@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace UI.DevPage.NewProjectsPage
 {
-    public class ProjectButtonHandler : MonoBehaviour, IButtonInfoHandler
+    public class NewProjectButtonHandler : MonoBehaviour, IButtonInfoHandler
     {
         private Project _buttonInfo;
         private Button _button;

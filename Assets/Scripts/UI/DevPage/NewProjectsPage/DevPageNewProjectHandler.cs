@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Domain.Projects;
+using UI.Global;
 using UnityEngine;
 
 namespace UI.DevPage.NewProjectsPage
@@ -13,8 +14,8 @@ namespace UI.DevPage.NewProjectsPage
             new("Factorio", 0, 2, Color.yellow)
         };
 
-        [SerializeField] private GameObject expandableButtonPrefab;
         [SerializeField] private GameObject scrollView;
+        [SerializeField] private GameObject expandableButtonPrefab;
         private ScrollViewHandler _scrollViewHandler;
 
         private void Start()

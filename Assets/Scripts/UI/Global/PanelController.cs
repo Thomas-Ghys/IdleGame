@@ -1,3 +1,4 @@
+using System;
 using Domain.Projects.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,11 +7,11 @@ namespace UI.Global
 {
     public class PanelController : MonoBehaviour
     {
-        public delegate void OnFocusDelegate();
-        public static OnFocusDelegate OnFocus;
+        // public delegate void OnFocusDelegate();
+        public static Action OnFocus;
 
-        public GameObject Panel;
-        public GameObject ButtonRoot;
+        [SerializeField] private GameObject panel;
+        [SerializeField] private GameObject buttonRoot;
         private IButtonInfoHandler _projectButtonHandler;
         private bool _panelIsOpen;
 
@@ -35,7 +36,7 @@ namespace UI.Global
 
         public void OpenPanel()
         {
-            if (Panel == null)
+            if (panel == null)
             {
                 return;
             }
@@ -52,15 +53,15 @@ namespace UI.Global
 
         private void Expand()
         {
-            var panelRectTransform = Panel.GetComponent<RectTransform>();
-            var testParentThingRect = ButtonRoot.GetComponent<RectTransform>();
+            var panelRectTransform = panel.GetComponent<RectTransform>();
+            var testParentThingRect = buttonRoot.GetComponent<RectTransform>();
             var maskRectTransform = gameObject.transform.parent.GetComponent<RectTransform>();
             var startingSize = maskRectTransform.sizeDelta;
 
             var newSize = new Vector2(startingSize.x, startingSize.y + (panelRectTransform.rect.height - gameObject.GetComponent<RectTransform>().rect.height));
 
             SetButtonPanelHeight(maskRectTransform, testParentThingRect, newSize);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(ButtonRoot.transform.parent.GetComponent<RectTransform>());
+            LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRoot.transform.parent.GetComponent<RectTransform>());
 
             OnFocus.Invoke();   // Collapse of itself should not execute because it isn't set as open yet.
             _panelIsOpen = true;
@@ -72,16 +73,15 @@ namespace UI.Global
             {
                 return;
             }
-            var panelRectTransform = Panel.GetComponent<RectTransform>();
-            var buttonRootRect = ButtonRoot.GetComponent<RectTransform>();
+            var panelRectTransform = panel.GetComponent<RectTransform>();
+            var buttonRootRect = buttonRoot.GetComponent<RectTransform>();
             var maskRectTransform = gameObject.transform.parent.GetComponent<RectTransform>();
             var startingSize = maskRectTransform.sizeDelta;
 
             var newSize = new Vector2(startingSize.x, startingSize.y - (panelRectTransform.rect.height - gameObject.GetComponent<RectTransform>().rect.height));
-
             
             SetButtonPanelHeight(maskRectTransform, buttonRootRect, newSize);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(ButtonRoot.transform.parent.GetComponent<RectTransform>());
+            LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRoot.transform.parent.GetComponent<RectTransform>());
             
             _panelIsOpen = false;
         }

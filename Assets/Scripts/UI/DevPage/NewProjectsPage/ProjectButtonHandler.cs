@@ -1,6 +1,7 @@
 using Domain.Projects.Interfaces;
 using TMPro;
 using UI.Global;
+using UI.Global.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 

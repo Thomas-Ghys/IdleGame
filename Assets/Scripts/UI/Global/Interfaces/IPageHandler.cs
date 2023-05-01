@@ -1,6 +1,6 @@
 using Domain.Projects.Interfaces;
 
-namespace UI.Global
+namespace UI.Global.Interfaces
 {
     public interface IPageHandler
     {

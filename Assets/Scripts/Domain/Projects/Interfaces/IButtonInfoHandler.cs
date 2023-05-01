@@ -1,5 +1,7 @@
 using UI.DevPage;
+using UI.DevPage.NewProjectsPage;
 using UI.Global;
+using UI.Global.Interfaces;
 
 namespace Domain.Projects.Interfaces
 {

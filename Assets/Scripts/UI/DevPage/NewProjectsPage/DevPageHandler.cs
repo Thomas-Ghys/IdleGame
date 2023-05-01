@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Projects;
 using Domain.Projects.Interfaces;
-using UI.DevPage.NewProjectsPage;
 using UI.Global;
+using UI.Global.Interfaces;
 using UnityEngine;
 
-namespace UI.DevPage
+namespace UI.DevPage.NewProjectsPage
 {
     public class DevPageHandler : MonoBehaviour, IPageHandler
     {

@@ -56,7 +56,6 @@ namespace UI.DevPage.NewProjectsPage
 
         private void StartProject(Project project)
         {
-            Debug.Log("Starting Project: " + project.Name);
             var rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
             var runningProjectsObject = rootObjects.SingleOrDefault(p => p.name == Globals.Project.RunningProjectsRoot);
             runningProjectsObject ??= new GameObject

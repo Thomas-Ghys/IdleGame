@@ -1,5 +1,6 @@
 using Domain.Projects.Interfaces;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Global
 {
@@ -52,22 +53,17 @@ namespace UI.Global
         private void Expand()
         {
             var panelRectTransform = Panel.GetComponent<RectTransform>();
+            var testParentThingRect = ButtonRoot.GetComponent<RectTransform>();
             var maskRectTransform = gameObject.transform.parent.GetComponent<RectTransform>();
             var startingSize = maskRectTransform.sizeDelta;
 
-            var newSize = new Vector2(startingSize.x, startingSize.y + panelRectTransform.rect.height);
+            var newSize = new Vector2(startingSize.x, startingSize.y + (panelRectTransform.rect.height - gameObject.GetComponent<RectTransform>().rect.height));
 
-            SetPanelHeight(maskRectTransform, newSize);
+            SetButtonPanelHeight(maskRectTransform, testParentThingRect, newSize);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(ButtonRoot.transform.parent.GetComponent<RectTransform>());
 
-            MoveButtonToFrontOfUI();
-            
             OnFocus.Invoke();   // Collapse of itself should not execute because it isn't set as open yet.
             _panelIsOpen = true;
-        }
-
-        private void MoveButtonToFrontOfUI()
-        {
-            // ButtonRoot.transform.SetAsLastSibling();
         }
 
         private void Collapse()
@@ -77,24 +73,30 @@ namespace UI.Global
                 return;
             }
             var panelRectTransform = Panel.GetComponent<RectTransform>();
+            var buttonRootRect = ButtonRoot.GetComponent<RectTransform>();
             var maskRectTransform = gameObject.transform.parent.GetComponent<RectTransform>();
             var startingSize = maskRectTransform.sizeDelta;
 
-            var newSize = new Vector2(startingSize.x, startingSize.y - panelRectTransform.rect.height);
+            var newSize = new Vector2(startingSize.x, startingSize.y - (panelRectTransform.rect.height - gameObject.GetComponent<RectTransform>().rect.height));
 
-            SetPanelHeight(maskRectTransform, newSize);
-                
+            
+            SetButtonPanelHeight(maskRectTransform, buttonRootRect, newSize);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(ButtonRoot.transform.parent.GetComponent<RectTransform>());
+            
             _panelIsOpen = false;
         }
 
-        private void SetPanelHeight(RectTransform rect,Vector2 newSize)
+        private void SetButtonPanelHeight(RectTransform maskRect, RectTransform buttonRootTransformRect,Vector2 newSize)
         {
             // Sets the new size of the rectangle.
-            rect.sizeDelta = newSize;
+            maskRect.sizeDelta = newSize;
+            buttonRootTransformRect.sizeDelta = newSize;
                 
             // Moves the position back to the correct location.
-            rect.anchoredPosition =
-                new Vector2(rect.anchoredPosition.x, rect.rect.height / -2);
+            maskRect.anchoredPosition =
+                new Vector2(maskRect.anchoredPosition.x, maskRect.rect.height / -2);
+            buttonRootTransformRect.anchoredPosition =
+                new Vector2(buttonRootTransformRect.anchoredPosition.x, buttonRootTransformRect.rect.height / -2);
         }
     }
 }

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6107903549401671595}
+  - component: {fileID: 6444729377660937755}
   m_Layer: 5
   m_Name: ProjectButtonWithPanel
   m_TagString: Untagged
@@ -35,8 +36,22 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 219.5, y: -81.30585}
-  m_SizeDelta: {x: 400, y: 96.0384}
+  m_SizeDelta: {x: 400, y: 96.03839}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6444729377660937755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401328225553324454}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &5725957892795654703
 GameObject:
   m_ObjectHideFlags: 0

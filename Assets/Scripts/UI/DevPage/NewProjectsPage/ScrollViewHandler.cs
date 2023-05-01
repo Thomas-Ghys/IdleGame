@@ -13,7 +13,7 @@ namespace UI.DevPage.NewProjectsPage
         private GameObject _content;
         private readonly List<GameObject> _buttons = new();
 
-        private void Start()
+        private void Awake()
         {
             if (gameObject.GetComponent<ScrollRect>() == null)
             {

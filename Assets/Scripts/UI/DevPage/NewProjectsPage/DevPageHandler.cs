@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Domain.Common;
 using Domain.Projects;
 using UI.Global;
 using UI.Global.Interfaces;
@@ -9,21 +10,10 @@ namespace UI.DevPage.NewProjectsPage
 {
     public class DevPageHandler : MonoBehaviour, IPageHandler
     {
-        // This is temporary, This should be set somewhere else. 
-        private List<Project> _possibleProjects = new()
-        {
-            new("Among us", 0, 1, Color.green),
-            new("Factorio", 0, 2, Color.yellow)
-        };
-
-
-        [SerializeField] private GameObject scrollView;
-        private ScrollViewHandler _scrollViewHandler;
-
-        [SerializeField] private GameObject buttonPrefab;
         private readonly List<GameObject> _pages = new();
 
         [SerializeField] private GameObject runningProjectPrefab;
+        [SerializeField] private List<GameObjectRecord> pages;
 
         private void Start()
         {
@@ -31,9 +21,6 @@ namespace UI.DevPage.NewProjectsPage
             {
                 _pages.Add(gameObject.transform.GetChild(i).gameObject);
             }
-
-            _scrollViewHandler = scrollView.GetComponent<ScrollViewHandler>();
-            SetPossibleProjects();
 
             ResetPagesToDefaultState();
         }
@@ -52,6 +39,12 @@ namespace UI.DevPage.NewProjectsPage
         {
             _pages.ForEach(p => p.SetActive(false));
             targetPage.SetActive(true);
+        }
+
+        private void StartProjectManually(Project project)
+        {
+            StartProject(project);
+            MoveToPage(pages.Single(p => p.Name == DevPages.RunningProjects).GameObject);
         }
 
         private void StartProject(Project project)
@@ -88,21 +81,13 @@ namespace UI.DevPage.NewProjectsPage
             mainPage.SetActive(true);
         }
 
-        private void SetPossibleProjects()
-        {
-            foreach (var project in _possibleProjects)
-            {
-                _scrollViewHandler.AddButtonToBottom(project, buttonPrefab);
-            }
-        }
-
         /// <summary>
         /// This is where all the event listeners should be added. These events also need to be removed before the script is disabled.
         /// </summary>
         private void EnableDelegates()
         {
             PanelController.OnFocus += CollapseAllPanels;
-            ProjectButtonHandler.OnStartProject += StartProject;
+            ProjectButtonHandler.OnStartProject += StartProjectManually;
         }
 
         /// <summary>
@@ -111,7 +96,7 @@ namespace UI.DevPage.NewProjectsPage
         private void DisableDelegates()
         {
             PanelController.OnFocus -= CollapseAllPanels;
-            ProjectButtonHandler.OnStartProject -= StartProject;
+            ProjectButtonHandler.OnStartProject -= StartProjectManually;
         }
     }
 }

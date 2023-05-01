@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1596528748}
   m_HandleRect: {fileID: 1596528747}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5716,7 +5716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f368573b12ebc8b458bb7e1d34d67816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 618764738}
 --- !u!1 &1320342133
 GameObject:
   m_ObjectHideFlags: 0

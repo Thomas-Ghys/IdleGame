@@ -1,14 +1,17 @@
 using Domain.Projects.Interfaces;
-using UI.DevPage.NewProjectsPage;
 using UnityEngine;
 
 namespace UI.Global
 {
     public class PanelController : MonoBehaviour
     {
+        public delegate void OnFocusDelegate();
+        public static OnFocusDelegate OnFocus;
+
         public GameObject Panel;
+        public GameObject ButtonRoot;
         private IButtonInfoHandler _projectButtonHandler;
-        private bool _panelIsOpen = false;
+        private bool _panelIsOpen;
 
         private void Start()
         {
@@ -17,6 +20,16 @@ namespace UI.Global
             {
                 Debug.LogError($"The object containing a {nameof(PanelController)} component must have an {nameof(IButtonInfoHandler)} component.");
             }
+        }
+
+        private void OnEnable()
+        {
+            OnFocus += Collapse;
+        }
+
+        private void OnDisable()
+        {
+            OnFocus -= Collapse;
         }
 
         public void OpenPanel()
@@ -32,7 +45,6 @@ namespace UI.Global
             }
             else
             {
-                _projectButtonHandler.CollapseAll();
                 Expand();
             }
         }
@@ -46,11 +58,19 @@ namespace UI.Global
             var newSize = new Vector2(startingSize.x, startingSize.y + panelRectTransform.rect.height);
 
             SetPanelHeight(maskRectTransform, newSize);
-                
+
+            MoveButtonToFrontOfUI();
+            
+            OnFocus.Invoke();   // Collapse of itself should not execute because it isn't set as open yet.
             _panelIsOpen = true;
         }
 
-        public void Collapse()
+        private void MoveButtonToFrontOfUI()
+        {
+            // ButtonRoot.transform.SetAsLastSibling();
+        }
+
+        private void Collapse()
         {
             if (!_panelIsOpen)
             {

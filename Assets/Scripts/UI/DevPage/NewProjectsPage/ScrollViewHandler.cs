@@ -44,13 +44,13 @@ namespace UI.DevPage.NewProjectsPage
         public void AddButtonToTop(Project project, GameObject buttonPrefab)
         {
             var newButton = AddButton(project, buttonPrefab);
-            newButton.transform.SetSiblingIndex(0);
+            newButton.transform.SetAsFirstSibling();
         }
 
         public void AddButtonToBottom(Project project, GameObject buttonPrefab)
         {
             var newButton = AddButton(project, buttonPrefab);
-            newButton.transform.SetSiblingIndex(_content.transform.childCount - 1);
+            newButton.transform.SetAsLastSibling();
         }
 
         private GameObject AddButton(IButtonInfo buttonInfo, GameObject buttonPrefab)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Projects;
@@ -37,6 +38,16 @@ namespace UI.DevPage
             ResetPagesToDefaultState();
         }
 
+        private void OnEnable()
+        {
+            EnableDelegates();
+        }
+
+        private void OnDisable()
+        {
+            DisableDelegates();
+        }
+
         public void MoveToPage(GameObject targetPage)
         {
             _pages.ForEach(p => p.SetActive(false));
@@ -51,7 +62,6 @@ namespace UI.DevPage
         public void CollapseAllPanels()
         {
             Debug.Log("All panels should be collapsed here.");
-            
         } 
         
         /// <summary>
@@ -76,6 +86,16 @@ namespace UI.DevPage
             {
                 _scrollViewHandler.AddButtonToBottom(project, buttonPrefab);
             }
+        }
+        
+        private void EnableDelegates()
+        {
+            PanelController.OnFocus += CollapseAllPanels;
+        }
+        
+        private void DisableDelegates()
+        {
+            PanelController.OnFocus -= CollapseAllPanels;
         }
     }
 }

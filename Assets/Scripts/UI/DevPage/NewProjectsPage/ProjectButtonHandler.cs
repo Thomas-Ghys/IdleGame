@@ -8,7 +8,6 @@ namespace UI.DevPage.NewProjectsPage
 {
     public class ProjectButtonHandler : MonoBehaviour, IButtonInfoHandler
     {
-        // TODO: Find a way to collapse all things when the DevPageHandler wants it so.
         private IButtonInfo _buttonInfo;
         private Button _button;
         private TextMeshProUGUI _text;
@@ -18,7 +17,7 @@ namespace UI.DevPage.NewProjectsPage
         public IButtonInfo ButtonInfo
         {
             get => _buttonInfo;
-            set
+            private set
             {
                 _buttonInfo = value;
                 SetButtonAttributes();
@@ -39,14 +38,9 @@ namespace UI.DevPage.NewProjectsPage
 
         public void Initialize(IButtonInfo buttonInfo, DevPageHandler devPageHandler)
         {
+            gameObject.name += $" {buttonInfo.Name}";
             ButtonInfo = buttonInfo;
             PageHandler = devPageHandler;
-        }
-
-        public void CollapseAll()
-        {
-            PageHandler.CollapseAllPanels();
-            
         }
 
         private void SetButtonAttributes()

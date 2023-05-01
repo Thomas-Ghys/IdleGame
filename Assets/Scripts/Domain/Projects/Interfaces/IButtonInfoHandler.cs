@@ -9,6 +9,5 @@ namespace Domain.Projects.Interfaces
         IPageHandler PageHandler { get; }
 
         void Initialize(IButtonInfo buttonInfo, DevPageHandler devPageHandler);
-        void CollapseAll();
     }
 }

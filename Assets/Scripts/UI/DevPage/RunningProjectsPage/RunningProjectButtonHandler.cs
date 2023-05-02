@@ -1,22 +1,17 @@
-using System;
 using Domain.Projects;
 using Domain.Projects.Interfaces;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.DevPage.NewProjectsPage
+namespace UI.DevPage.RunningProjectsPage
 {
-    public class NewProjectButtonHandler : MonoBehaviour, IButtonInfoHandler
+    public class RunningProjectButtonHandler : MonoBehaviour, IButtonInfoHandler
     {
         private Project _buttonInfo;
         private Button _button;
         private TextMeshProUGUI _text;
-
-        [SerializeField] private Button startButton;
-        public static Action<Project> OnStartProject;
-
+        
         public Project ButtonInfo
         {
             get => _buttonInfo;
@@ -26,7 +21,7 @@ namespace UI.DevPage.NewProjectsPage
                 SetButtonAttributes();
             }
         }
-
+        
         private void Awake()
         {
             _button = gameObject.GetComponent<Button>();
@@ -38,10 +33,8 @@ namespace UI.DevPage.NewProjectsPage
         {
             gameObject.name += $" {buttonInfo.Name}";
             ButtonInfo = buttonInfo;
-
-            startButton.GetComponent<Button>().onClick.AddListener(() => { OnStartProject.Invoke(buttonInfo.CloneWithNewId()); });
         }
-
+        
         private void SetButtonAttributes()
         {
             _text.text = ButtonInfo.Name;

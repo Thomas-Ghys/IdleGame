@@ -19,5 +19,13 @@ namespace Domain.Projects
         public int RequirementCurrent { get; set; }
         public int RequirementTotal { get; set; }
         public Color Color { get; set; }
+
+        public Project CloneWithNewId()
+        {
+            return new Project(Name, RequirementCurrent, RequirementTotal, Color)
+            {
+                Id = Guid.NewGuid()
+            };
+        }
     }
 }

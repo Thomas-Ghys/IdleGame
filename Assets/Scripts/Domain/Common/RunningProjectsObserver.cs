@@ -14,7 +14,6 @@ public class RunningProjectsObserver : MonoBehaviour
 
     void Update()
     {
-        // TODO: Something weird is happening here.
         var currentProjectObjects = gameObject.GetAllChildren().ToList();
         if (_previousProjectObjects.Count < currentProjectObjects.Count)
         {

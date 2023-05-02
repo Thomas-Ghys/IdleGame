@@ -13,16 +13,20 @@ public class DevPageRunningProjectsHandler : MonoBehaviour
     private ScrollViewHandler _scrollViewHandler;
     private List<ProjectLogic> _projects;
 
+    private void Awake()
+    {
+        _scrollViewHandler = scrollView.GetComponent<ScrollViewHandler>();
+    }
+    
     private void Start()
     {
         var rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
         var runningProjectsObject = rootObjects.SingleOrDefault(p => p.name == Globals.Project.RunningProjectsRoot);
-        _scrollViewHandler = scrollView.GetComponent<ScrollViewHandler>();
         _projects = runningProjectsObject.GetAllChildren().Select(p => p.GetComponent<ProjectLogic>()).ToList();
 
         foreach (var project in _projects)
         {
-            _scrollViewHandler.AddButtonToBottom(project.ProjectInfo, runningProjectButtonPrefab);
+            //_scrollViewHandler.AddButtonToBottom(project.ProjectInfo, runningProjectButtonPrefab);
         }
     }
 

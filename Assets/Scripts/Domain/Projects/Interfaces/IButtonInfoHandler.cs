@@ -6,8 +6,7 @@ namespace Domain.Projects.Interfaces
     public interface IButtonInfoHandler
     {
         Project ButtonInfo { get; }
-        IPageHandler PageHandler { get; }
 
-        void Initialize(Project buttonInfo, DevPageHandler devPageHandler);
+        void Initialize(Project buttonInfo);
     }
 }

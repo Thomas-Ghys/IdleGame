@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Domain.Projects;
 using Domain.Projects.Interfaces;
-using UI.DevPage;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +8,6 @@ namespace UI.Global
 {
     public class ScrollViewHandler : MonoBehaviour
     {
-        public DevPageHandler DevPageHandler;
-
         private GameObject _content;
         private ScrollRect _scrollRect;
         private readonly List<GameObject> _buttons = new();
@@ -65,7 +62,9 @@ namespace UI.Global
         private GameObject AddButton(Project buttonInfo, GameObject buttonPrefab)
         {
             var newProjectButton = Instantiate(buttonPrefab, _content.transform, false);
-            newProjectButton.GetComponentInChildren<IButtonInfoHandler>()?.Initialize(buttonInfo, DevPageHandler);
+            var buttonHandler = newProjectButton.GetComponent<IButtonInfoHandler>();
+            buttonHandler ??= newProjectButton.GetComponentInChildren<IButtonInfoHandler>();
+            buttonHandler.Initialize(buttonInfo);
             return newProjectButton;
         }
 

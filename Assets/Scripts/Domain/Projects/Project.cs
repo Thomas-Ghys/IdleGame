@@ -1,4 +1,5 @@
 using System;
+using Domain.Common;
 using UnityEngine;
 
 namespace Domain.Projects
@@ -19,6 +20,9 @@ namespace Domain.Projects
         public int RequirementCurrent { get; set; }
         public int RequirementTotal { get; set; }
         public Color Color { get; set; }
+        public TimeSpan TimeActive { get; set; }
+        public string TimeActiveAsString => TimeFormatter.FormatForButton(TimeActive);
+        
 
         public Project CloneWithNewId()
         {

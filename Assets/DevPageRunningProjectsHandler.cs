@@ -23,11 +23,6 @@ public class DevPageRunningProjectsHandler : MonoBehaviour
         var rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
         var runningProjectsObject = rootObjects.SingleOrDefault(p => p.name == Globals.Project.RunningProjectsRoot);
         _projects = runningProjectsObject.GetAllChildren().Select(p => p.GetComponent<ProjectLogic>()).ToList();
-
-        foreach (var project in _projects)
-        {
-            //_scrollViewHandler.AddButtonToBottom(project.ProjectInfo, runningProjectButtonPrefab);
-        }
     }
 
     private void OnEnable()

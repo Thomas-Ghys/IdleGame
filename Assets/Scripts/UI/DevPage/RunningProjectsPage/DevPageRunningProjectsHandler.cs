@@ -42,7 +42,7 @@ public class DevPageRunningProjectsHandler : MonoBehaviour
         Debug.Log("Project has been added");
         foreach (var project in newProjects)
         {
-            _scrollViewHandler.AddButtonToBottom(project, runningProjectButtonPrefab);
+            _scrollViewHandler.AddButtonToTop(project, runningProjectButtonPrefab);
         }
     }
 

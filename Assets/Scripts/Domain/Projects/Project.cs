@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Domain.Common;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ namespace Domain.Projects
         public Color Color { get; set; }
         public TimeSpan TimeActive { get; set; }
         public string TimeActiveAsString => TimeFormatter.FormatForButton(TimeActive);
-        
+        public IEnumerable<ProjectStat> Stats { get; set; }
 
         public Project CloneWithNewId()
         {

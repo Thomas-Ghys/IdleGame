@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Domain.Common;
+using Domain.Common.DevPagesRecords;
 using Domain.Projects;
 using UI.DevPage.NewProjectsPage;
+using UI.DevPage.PageEnums;
 using UI.Global;
 using UI.Global.Interfaces;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace UI.DevPage
         private readonly List<GameObject> _pages = new();
 
         [SerializeField] private GameObject runningProjectPrefab;
-        [SerializeField] private List<GameObjectRecord> pages;
+        [SerializeField] private List<DevPageRecord> pages;
 
         private void Start()
         {

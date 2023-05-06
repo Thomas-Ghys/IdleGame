@@ -1,4 +1,4 @@
-namespace UI.DevPage
+namespace UI.DevPage.PageEnums
 {
     public enum DevPages
     {

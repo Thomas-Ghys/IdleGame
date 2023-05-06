@@ -1,3 +1,4 @@
+using System;
 using Domain.Projects;
 using Domain.Projects.Interfaces;
 using TMPro;
@@ -12,6 +13,8 @@ namespace UI.DevPage.RunningProjectsPage
         private Button _button;
         private TextMeshProUGUI _text;
         private TextMeshProUGUI _timeText;
+
+        public static event Action<Project> OnMoveToProjectDetails;
         
         public Project ButtonInfo
         {
@@ -46,6 +49,11 @@ namespace UI.DevPage.RunningProjectsPage
         {
             gameObject.name += $" {buttonInfo.Name}";
             ButtonInfo = buttonInfo;
+        }
+
+        public void MoveToProjectDetails()
+        {
+            OnMoveToProjectDetails?.Invoke(ButtonInfo);
         }
 
         private void SetButtonAttributes()

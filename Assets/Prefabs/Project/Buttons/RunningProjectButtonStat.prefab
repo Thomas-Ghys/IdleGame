@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 8787503009763530823}
   - component: {fileID: 7549779017248293570}
   m_Layer: 5
-  m_Name: RunningProjectButton
+  m_Name: RunningProjectButtonStat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

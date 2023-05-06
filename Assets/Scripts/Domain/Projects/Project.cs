@@ -1,25 +1,24 @@
 using System;
 using System.Collections.Generic;
 using Domain.Common;
+using Domain.Projects.Interfaces;
 using UnityEngine;
 
 namespace Domain.Projects
 {
     public class Project
     {
-        public Project(string name, int requirementCurrent, int requirementTotal, Color color)
+        public Project(string name, IProjectRequirement projectRequirement, Color color)
         {
             Id = Guid.NewGuid();
             Name = name;
-            RequirementCurrent = requirementCurrent;
-            RequirementTotal = requirementTotal;
+            ProjectRequirement = projectRequirement;
             Color = color;
         }
 
         public Guid Id { get; private set; }
         public string Name { get; set; }
-        public int RequirementCurrent { get; set; }
-        public int RequirementTotal { get; set; }
+        public IProjectRequirement ProjectRequirement { get; set; }
         public Color Color { get; set; }
         public TimeSpan TimeActive { get; set; }
         public string TimeActiveAsString => TimeFormatter.FormatForButton(TimeActive);
@@ -27,7 +26,7 @@ namespace Domain.Projects
 
         public Project CloneWithNewId()
         {
-            return new Project(Name, RequirementCurrent, RequirementTotal, Color)
+            return new Project(Name, ProjectRequirement.Clone(), Color)
             {
                 Id = Guid.NewGuid()
             };

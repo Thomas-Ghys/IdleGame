@@ -1,11 +1,11 @@
 using System;
-using UI.DevPage;
+using UI.DevPage.PageEnums;
 using UnityEngine;
 
-namespace Domain.Common
+namespace Domain.Common.DevPagesRecords
 {
     [Serializable]
-    public struct GameObjectRecord
+    public struct DevPageRecord
     {
         public DevPages Name;
         public GameObject GameObject;

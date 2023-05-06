@@ -10,8 +10,8 @@ namespace UI.DevPage.NewProjectsPage
         // This is temporary, This should be set somewhere else. 
         private List<Project> _possibleProjects = new()
         {
-            new("Among us", 0, 1, Color.green),
-            new("Factorio", 0, 2, Color.yellow)
+            new("Among us", new ProjectFractionRequirement(0, 1), Color.green),
+            new("Factorio", new ProjectFractionRequirement(0, 2), Color.yellow)
         };
 
         [SerializeField] private GameObject scrollView;

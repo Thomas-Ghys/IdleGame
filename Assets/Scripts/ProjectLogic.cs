@@ -10,7 +10,6 @@ public class ProjectLogic : MonoBehaviour
     public Project ProjectInfo => _projectInfo;
     public static event Action OnProjectTimeStringChange;
 
-    // Update is called once per frame
     void Update()
     {
         ProjectInfo.TimeActive += TimeSpan.FromSeconds(Convert.ToDouble(Time.deltaTime));

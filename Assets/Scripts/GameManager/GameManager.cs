@@ -4,8 +4,8 @@ using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
-    int interval = 1;
-    float nextTime = 0;
+    private int interval = 1;
+    private float nextTime = 0;
 
     // Start is called before the first frame update
     void Start()

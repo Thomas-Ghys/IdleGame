@@ -45,7 +45,7 @@ public partial class GameManager : MonoBehaviour
 
     private void updateBudget()
     {
-        budget = budget + cashFlow;
+        budget += cashFlow;
         cashFlow = (double)Random.Range(-1000000000, 10000000000);
     }
 }

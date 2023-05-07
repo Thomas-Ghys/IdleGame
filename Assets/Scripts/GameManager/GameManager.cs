@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
-    private int interval = 1;
-    private float nextTime = 0;
+    private int _interval = 1;
+    private float _nextTime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +19,15 @@ public partial class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextTime)
+        if (Time.time >= _nextTime)
         {
-            randomUpdateEmployees();
-            updateBudget();
-            nextTime += interval;
+            RandomUpdateEmployees();
+            UpdateBudget();
+            _nextTime += _interval;
         }
-        
     }
 
-    private void randomUpdateEmployees()
+    private void RandomUpdateEmployees()
     {
         float randomChance = Random.value;
         if (0.5 < randomChance && randomChance < .6)
@@ -43,7 +40,7 @@ public partial class GameManager : MonoBehaviour
         TotalEmployees = assignedEmployees + unAssignedEmployees;
     }
 
-    private void updateBudget()
+    private void UpdateBudget()
     {
         budget += cashFlow;
         cashFlow = (double)Random.Range(-1000000000, 10000000000);

@@ -1,21 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject gameManager;
-    public GameObject companyName;
-    public GameObject employeeState;
+    public GameObject gameManagerObject;
+    public GameObject companyNameObject;
+    public GameObject employeeStateObject;
     public string employeeSpriteName;
-    public GameObject companyBudget;
+    public GameObject companyBudgetObject;
     public string companyBudgetSpriteName;
-    public GameObject companyCashFlow;
+    public GameObject companyCashFlowObject;
     public string positiveCashFlowSpriteName;
     public string NegativeCashFlowSpriteName;
-    private string cashFlowBase = "€/s";
+    private string cashFlowBase = "â‚¬/s";
 
+    private GameManager _gameManager;
 
+    private TextMeshProUGUI _companyNameText;
+    private TextMeshProUGUI _employeeStateText;
+    private TextMeshProUGUI _companyBudgetText;
+    private TextMeshProUGUI _companyCashFlowText;
+
+    private void Awake()
+    {
+        _gameManager = gameManagerObject.GetComponent<GameManager>();
+        _companyNameText = companyNameObject.GetComponent<TextMeshProUGUI>();
+        _employeeStateText = employeeStateObject.GetComponent<TextMeshProUGUI>();
+        _companyBudgetText = companyBudgetObject.GetComponent<TextMeshProUGUI>();
+        _companyCashFlowText = companyCashFlowObject.GetComponent<TextMeshProUGUI>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,45 +39,41 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        setCompanyName();
-        setEmployeeState();
-        setCompanyBudget();
-        setCompanyCashFlow();
+        SetCompanyName();
+        SetEmployeeState();
+        SetCompanyBudget();
+        SetCompanyCashFlow();
     }
 
-    private void setCompanyName()
+    private void SetCompanyName()
     {
-        companyName.GetComponent<TMPro.TextMeshProUGUI>().text = gameManager.GetComponent<GameManager>().getCompanyName();
-
+        _companyNameText.text = _gameManager.getCompanyName();
     }
 
-    private void setEmployeeState()
+    private void SetEmployeeState()
     {
-        employeeState.GetComponent<TMPro.TextMeshProUGUI>().text = $"<sprite name='{employeeSpriteName}'> " +
-            gameManager.GetComponent<GameManager>().getUnAssignedEmployeesNumber() +
-            "/" + 
-            gameManager.GetComponent<GameManager>().getTotalEmployeesNumber();
+        _employeeStateText.text =
+            $"<sprite name='{employeeSpriteName}'> {_gameManager.getUnAssignedEmployeesNumber()} / {_gameManager.getTotalEmployeesNumber()}";
     }
 
-    private void setCompanyBudget()
+    private void SetCompanyBudget()
     {
-        companyBudget.GetComponent<TMPro.TextMeshProUGUI>().text = $"<sprite name='{companyBudgetSpriteName}'> " + 
-            gameManager.GetComponent<GameManager>().getCompanyBudget();
+        _companyBudgetText.text = $"<sprite name='{companyBudgetSpriteName}'> {_gameManager.getCompanyBudget()}";
     }
 
-    private void setCompanyCashFlow()
+    private void SetCompanyCashFlow()
     {
-        double income = gameManager.GetComponent<GameManager>().getCashFlow();
+        var income = _gameManager.getCashFlow();
 
         if (income >= 0)
         {
-            companyCashFlow.GetComponent<TMPro.TextMeshProUGUI>().text = $"<sprite name='{positiveCashFlowSpriteName}'> ";
+            _companyCashFlowText.text = $"<sprite name='{positiveCashFlowSpriteName}'> ";
         }
         else
         {
-            companyCashFlow.GetComponent<TMPro.TextMeshProUGUI>().text = $"<sprite name='{NegativeCashFlowSpriteName}'> ";
+            _companyCashFlowText.text = $"<sprite name='{NegativeCashFlowSpriteName}'> ";
         }
 
-        companyCashFlow.GetComponent<TMPro.TextMeshProUGUI>().text += income + cashFlowBase;
+        _companyCashFlowText.text += income + cashFlowBase;
     }
 }

@@ -8,12 +8,12 @@ public partial class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        companyName = "Test Company name";
-        assignedEmployees = 0;
-        unAssignedEmployees = 1;
-        TotalEmployees = assignedEmployees + unAssignedEmployees;
-        budget = 0;
-        cashFlow = Random.Range(-1000000000, 10000000000);
+        _companyName = "Test Company name";
+        _assignedEmployees = 0;
+        _unAssignedEmployees = 1;
+        _totalEmployees = _assignedEmployees + _unAssignedEmployees;
+        _budget = 0;
+        _cashFlow = Random.Range(-1000000000, 10000000000);
     }
 
     // Update is called once per frame
@@ -32,17 +32,18 @@ public partial class GameManager : MonoBehaviour
         float randomChance = Random.value;
         if (0.5 < randomChance && randomChance < .6)
         {
-            assignedEmployees += 1;
+            _assignedEmployees += 1;
         } else if (0.6 < randomChance && randomChance < .75)
         {
-            unAssignedEmployees += 1;
+            _unAssignedEmployees += 1;
         }
-        TotalEmployees = assignedEmployees + unAssignedEmployees;
+
+        _totalEmployees = _assignedEmployees + _unAssignedEmployees;
     }
 
     private void UpdateBudget()
     {
-        budget += cashFlow;
-        cashFlow = (double)Random.Range(-1000000000, 10000000000);
+        _budget += _cashFlow;
+        _cashFlow = (double)Random.Range(-1000000000, 10000000000);
     }
 }

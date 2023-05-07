@@ -12,7 +12,8 @@ public class UIManager : MonoBehaviour
     public GameObject companyCashFlowObject;
     public string positiveCashFlowSpriteName;
     public string NegativeCashFlowSpriteName;
-    private string cashFlowBase = "€/s";
+
+    private const string CashFlowBase = "€/s";
 
     private GameManager _gameManager;
 
@@ -47,23 +48,23 @@ public class UIManager : MonoBehaviour
 
     private void SetCompanyName()
     {
-        _companyNameText.text = _gameManager.getCompanyName();
+        _companyNameText.text = _gameManager.CompanyName;
     }
 
     private void SetEmployeeState()
     {
         _employeeStateText.text =
-            $"<sprite name='{employeeSpriteName}'> {_gameManager.getUnAssignedEmployeesNumber()} / {_gameManager.getTotalEmployeesNumber()}";
+            $"<sprite name='{employeeSpriteName}'> {_gameManager.UnAssignedEmployees} / {_gameManager.TotalEmployees}";
     }
 
     private void SetCompanyBudget()
     {
-        _companyBudgetText.text = $"<sprite name='{companyBudgetSpriteName}'> {_gameManager.getCompanyBudget()}";
+        _companyBudgetText.text = $"<sprite name='{companyBudgetSpriteName}'> {_gameManager.Budget}";
     }
 
     private void SetCompanyCashFlow()
     {
-        var income = _gameManager.getCashFlow();
+        var income = _gameManager.CashFlow;
 
         if (income >= 0)
         {
@@ -74,6 +75,6 @@ public class UIManager : MonoBehaviour
             _companyCashFlowText.text = $"<sprite name='{NegativeCashFlowSpriteName}'> ";
         }
 
-        _companyCashFlowText.text += income + cashFlowBase;
+        _companyCashFlowText.text += income + CashFlowBase;
     }
 }

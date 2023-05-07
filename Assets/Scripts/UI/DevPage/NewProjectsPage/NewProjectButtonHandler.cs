@@ -2,7 +2,6 @@ using System;
 using Domain.Projects;
 using Domain.Projects.Interfaces;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,12 +16,12 @@ namespace UI.DevPage.NewProjectsPage
         [SerializeField] private Button startButton;
         public static Action<Project> OnStartProject;
 
-        public Project ButtonInfo
+        public IButtonInfo ButtonInfo
         {
             get => _buttonInfo;
             private set
             {
-                _buttonInfo = value;
+                _buttonInfo = value as Project;
                 SetButtonAttributes();
             }
         }
@@ -34,20 +33,23 @@ namespace UI.DevPage.NewProjectsPage
             _text = textObject.GetComponent<TextMeshProUGUI>();
         }
 
-        public void Initialize(Project buttonInfo)
+        public void Initialize(IButtonInfo buttonInfo)
         {
-            gameObject.name += $" {buttonInfo.Name}";
             ButtonInfo = buttonInfo;
+            gameObject.name += $" {_buttonInfo.Name}";
 
-            startButton.GetComponent<Button>().onClick.AddListener(() => { OnStartProject.Invoke(buttonInfo.CloneWithNewId()); });
+            startButton.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                OnStartProject.Invoke(_buttonInfo.CloneWithNewId());
+            });
         }
 
         private void SetButtonAttributes()
         {
-            _text.text = ButtonInfo.Name;
+            _text.text = _buttonInfo.Name;
             var colours = _button.colors;
-            colours.normalColor = ButtonInfo.Color;
-            colours.selectedColor = ButtonInfo.Color;
+            colours.normalColor = _buttonInfo.Color;
+            colours.selectedColor = _buttonInfo.Color;
             _button.colors = colours;
         }
     }

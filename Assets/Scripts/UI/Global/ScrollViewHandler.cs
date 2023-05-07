@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Domain.Projects;
 using Domain.Projects.Interfaces;
+using Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,19 +47,28 @@ namespace UI.Global
             }
         }
 
-        public void AddButtonToTop(Project project, GameObject buttonPrefab)
+        public void ClearButtons()
         {
-            var newButton = AddButton(project, buttonPrefab);
+            var buttons = _content.GetAllChildren();
+            foreach (var button in buttons)
+            {
+                Destroy(button);
+            }
+        }
+
+        public void AddButtonToTop(IButtonInfo buttonInfo, GameObject buttonPrefab)
+        {
+            var newButton = AddButton(buttonInfo, buttonPrefab);
             newButton.transform.SetAsFirstSibling();
         }
 
-        public void AddButtonToBottom(Project project, GameObject buttonPrefab)
+        public void AddButtonToBottom(IButtonInfo buttonInfo, GameObject buttonPrefab)
         {
-            var newButton = AddButton(project, buttonPrefab);
+            var newButton = AddButton(buttonInfo, buttonPrefab);
             newButton.transform.SetAsLastSibling();
         }
 
-        private GameObject AddButton(Project buttonInfo, GameObject buttonPrefab)
+        private GameObject AddButton(IButtonInfo buttonInfo, GameObject buttonPrefab)
         {
             var newProjectButton = Instantiate(buttonPrefab, _content.transform, false);
             var buttonHandler = newProjectButton.GetComponent<IButtonInfoHandler>();

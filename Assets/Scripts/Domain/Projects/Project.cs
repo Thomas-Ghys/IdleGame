@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Domain.Common;
 using Domain.Projects.Interfaces;
 using UnityEngine;
 
 namespace Domain.Projects
 {
-    public class Project
+    public class Project : IButtonInfo
     {
         public Project(string name, IProjectRequirement projectRequirement, Color color)
         {
@@ -14,6 +15,7 @@ namespace Domain.Projects
             Name = name;
             ProjectRequirement = projectRequirement;
             Color = color;
+            Stats = new List<ProjectStat>();
         }
 
         public Guid Id { get; private set; }
@@ -28,7 +30,8 @@ namespace Domain.Projects
         {
             return new Project(Name, ProjectRequirement.Clone(), Color)
             {
-                Id = Guid.NewGuid()
+                Id = Guid.NewGuid(),
+                Stats = Stats.Select(p => p.CloneWithNewId())
             };
         }
     }

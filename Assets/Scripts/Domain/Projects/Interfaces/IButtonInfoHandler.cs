@@ -1,12 +1,9 @@
-using UI.DevPage;
-using UI.Global.Interfaces;
-
 namespace Domain.Projects.Interfaces
 {
     public interface IButtonInfoHandler
     {
-        Project ButtonInfo { get; }
+        IButtonInfo ButtonInfo { get; }
 
-        void Initialize(Project buttonInfo);
+        void Initialize(IButtonInfo buttonInfo);
     }
 }

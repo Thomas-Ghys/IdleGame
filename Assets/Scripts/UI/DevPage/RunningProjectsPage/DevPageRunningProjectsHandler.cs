@@ -44,13 +44,6 @@ public class DevPageRunningProjectsHandler : MonoBehaviour
         RunningProjectButtonHandler.OnMoveToProjectDetails -= MoveToProjectDetailsPage;
     }
 
-    private void MoveToProjectDetailsPage(Project project)
-    {
-        Debug.Log("hihi");
-        pages.ForEach(p => p.GameObject.SetActive(false));
-        pages.Single(p => p.Name == RunningProjectsPages.ProjectDetails).GameObject.SetActive(true);
-    }
-
     private void HandleProjectAddition(List<Project> newProjects)
     {
         Debug.Log("Project has been added");
@@ -79,5 +72,21 @@ public class DevPageRunningProjectsHandler : MonoBehaviour
         }
 
         mainPage.SetActive(true);
+    }
+
+    // TODO: Here are 2 ways to move to different pages. One is triggered by an event and the other is
+    //  triggered through a unity event, this isn't clean, so come back later to clean up
+    public void MoveToPage(GameObject page)
+    {
+        pages.ForEach(p => p.GameObject.SetActive(false));
+        page.SetActive(true);
+    }
+
+    private void MoveToProjectDetailsPage(Project project)
+    {
+        pages.ForEach(p => p.GameObject.SetActive(false));
+        var targetPage = pages.Single(p => p.Name == RunningProjectsPages.ProjectDetails).GameObject;
+        targetPage.GetComponent<RunningProjectsDetailsHandler>().UpdateActiveProject(project);
+        targetPage.SetActive(true);
     }
 }

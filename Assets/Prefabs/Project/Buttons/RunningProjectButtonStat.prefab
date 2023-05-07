@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5171919632280856959}
   - component: {fileID: 7319523088267390315}
   m_Layer: 5
-  m_Name: Time
+  m_Name: Progress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 8787503009763530821}
   - component: {fileID: 8787503009763530822}
   - component: {fileID: 8787503009763530823}
-  - component: {fileID: 7549779017248293570}
+  - component: {fileID: -3078773848853351156}
   m_Layer: 5
   m_Name: RunningProjectButtonStat
   m_TagString: Untagged
@@ -394,10 +394,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7549779017248293570}
+      - m_Target: {fileID: -3078773848853351156}
         m_TargetAssemblyTypeName: UI.DevPage.RunningProjectsPage.RunningProjectButtonHandler,
           Assembly-CSharp
-        m_MethodName: MoveToProjectDetails
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -407,7 +407,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7549779017248293570
+--- !u!114 &-3078773848853351156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,6 +416,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8787503009763530825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ad4fa0d03104eb39193aab889f13aec, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cdc91e2830492d468881a8ba2495bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressText: {fileID: 7319523088267390315}
+  text: {fileID: 8787503009615082165}

@@ -15,17 +15,17 @@ namespace UI.DevPage.RunningProjectsPage
         private TextMeshProUGUI _timeText;
 
         public static event Action<Project> OnMoveToProjectDetails;
-        
-        public Project ButtonInfo
+
+        public IButtonInfo ButtonInfo
         {
             get => _buttonInfo;
             private set
             {
-                _buttonInfo = value;
+                _buttonInfo = value as Project;
                 SetButtonAttributes();
             }
         }
-        
+
         private void Awake()
         {
             _button = gameObject.GetComponent<Button>();
@@ -45,29 +45,30 @@ namespace UI.DevPage.RunningProjectsPage
             ProjectLogic.OnProjectTimeStringChange -= UpdateButtonTime;
         }
 
-        public void Initialize(Project buttonInfo)
+        public void Initialize(IButtonInfo buttonInfo)
         {
-            gameObject.name += $" {buttonInfo.Name}";
-            ButtonInfo = buttonInfo;
+            var projectButtonInfo = buttonInfo as Project;
+            gameObject.name += $" {projectButtonInfo.Name}";
+            ButtonInfo = projectButtonInfo;
         }
 
         public void MoveToProjectDetails()
         {
-            OnMoveToProjectDetails?.Invoke(ButtonInfo);
+            OnMoveToProjectDetails?.Invoke(_buttonInfo);
         }
 
         private void SetButtonAttributes()
         {
-            _text.text = ButtonInfo.Name;
+            _text.text = _buttonInfo.Name;
             var colours = _button.colors;
-            colours.normalColor = ButtonInfo.Color;
-            colours.selectedColor = ButtonInfo.Color;
+            colours.normalColor = _buttonInfo.Color;
+            colours.selectedColor = _buttonInfo.Color;
             _button.colors = colours;
         }
 
         private void UpdateButtonTime()
         {
-            _timeText.text = ButtonInfo.TimeActiveAsString;
+            _timeText.text = _buttonInfo.TimeActiveAsString;
         }
     }
 }

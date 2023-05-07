@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2505296
 RectTransform:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 89201029}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.19763242}
   m_AnchorMax: {x: 1, y: 0.8507321}
@@ -431,15 +431,15 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1659169828}
-  - {fileID: 2505296}
   - {fileID: 2070789692}
-  - {fileID: 623849978}
   - {fileID: 1645221391}
-  - {fileID: 854141731}
-  - {fileID: 1185093617}
   - {fileID: 1550021495}
   - {fileID: 545135348}
+  - {fileID: 623849978}
+  - {fileID: 1659169828}
+  - {fileID: 2505296}
+  - {fileID: 1185093617}
+  - {fileID: 854141731}
   - {fileID: 264197181}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1020,6 +1020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 264197181}
+  - component: {fileID: 264197182}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1049,6 +1050,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &264197182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264197180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60f99da19ecff34f848e008df6558e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManagerObject: {fileID: 1714977087}
+  companyNameObject: {fileID: 1176187091}
+  employeeStateObject: {fileID: 767720754}
+  employeeSpriteName: heart
+  companyBudgetObject: {fileID: 1892526409}
+  companyBudgetSpriteName: heart
+  companyCashFlowObject: {fileID: 1892526409}
+  positiveCashFlowSpriteName: heart
+  NegativeCashFlowSpriteName: heart
 --- !u!1 &318007077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,7 +1984,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 89201029}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.19763242}
   m_AnchorMax: {x: 1, y: 0.8507321}
@@ -2460,7 +2482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollView: {fileID: 841561208}
   scrollViewContent: {fileID: 488935972}
-  runningProjectStatButtonPrefab: {fileID: 8787503009763530825, guid: c41828ed248b5ef49b8f06e70208e530, type: 3}
+  runningProjectStatButtonPrefab: {fileID: 8787503009763530825, guid: c41828ed248b5ef49b8f06e70208e530,
+    type: 3}
   pageHeaderText: {fileID: 1269809312}
 --- !u!1 &604287699
 GameObject:
@@ -2612,7 +2635,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 89201029}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.19763242}
   m_AnchorMax: {x: 1, y: 0.8507321}
@@ -4350,7 +4373,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 89201029}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.19763242}
   m_AnchorMax: {x: 1, y: 0.8507321}
@@ -5626,7 +5649,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 89201029}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.19763242}
   m_AnchorMax: {x: 1, y: 0.8507321}
@@ -6380,7 +6403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollView: {fileID: 2143850182}
-  expandableButtonPrefab: {fileID: 3401328225553324454, guid: 6bbbc25e4ef72494b9d89f4a2c2d6dfa, type: 3}
+  expandableButtonPrefab: {fileID: 3401328225553324454, guid: 6bbbc25e4ef72494b9d89f4a2c2d6dfa,
+    type: 3}
 --- !u!1 &1320342133
 GameObject:
   m_ObjectHideFlags: 0
@@ -7380,7 +7404,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 89201029}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.19763242}
   m_AnchorMax: {x: 1, y: 0.8507321}
@@ -7829,7 +7853,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollView: {fileID: 1206780517}
-  runningProjectButtonPrefab: {fileID: 8787503009763530825, guid: 3e78c81af6ab9fa4498a61215a0ceae2, type: 3}
+  runningProjectButtonPrefab: {fileID: 8787503009763530825, guid: 3e78c81af6ab9fa4498a61215a0ceae2,
+    type: 3}
   pages:
   - Name: 0
     GameObject: {fileID: 2102479521}
@@ -7869,7 +7894,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 89201029}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.19763242}
   m_AnchorMax: {x: 1, y: 0.8507321}
@@ -7995,7 +8020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1659169828
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8009,7 +8034,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 89201029}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.19763242}
   m_AnchorMax: {x: 1, y: 0.8507321}
@@ -10344,7 +10369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2070789692
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10356,12 +10381,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1449353260}
-  - {fileID: 1297864456}
-  - {fileID: 1625365424}
+  m_Children: [{fileID: 1449353260}, {fileID: 1297864456}, {fileID: 1625365424}]
   m_Father: {fileID: 89201029}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.19763242}
   m_AnchorMax: {x: 1, y: 0.8507321}
@@ -10479,7 +10501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707d8919c7ae43ebb18449b2b858dc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runningProjectPrefab: {fileID: 8498421833920743812, guid: 82aad9acefa6c604ab2d8b258b516b85, type: 3}
+  runningProjectPrefab: {fileID: 8498421833920743812, guid: 82aad9acefa6c604ab2d8b258b516b85,
+    type: 3}
   pages:
   - Name: 0
     GameObject: {fileID: 1449353259}

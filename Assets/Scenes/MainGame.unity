@@ -559,13 +559,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60f99da19ecff34f848e008df6558e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1714977087}
-  companyName: {fileID: 1176187091}
-  employeeState: {fileID: 767720754}
+  gameManagerObject: {fileID: 1714977087}
+  companyNameObject: {fileID: 1176187091}
+  employeeStateObject: {fileID: 767720754}
   employeeSpriteName: heart
-  companyBudget: {fileID: 1892526409}
+  companyBudgetObject: {fileID: 1892526409}
   companyBudgetSpriteName: heart
-  companyCashFlow: {fileID: 2144886724}
+  companyCashFlowObject: {fileID: 1892526409}
   positiveCashFlowSpriteName: heart
   NegativeCashFlowSpriteName: heart
 --- !u!1 &408549650

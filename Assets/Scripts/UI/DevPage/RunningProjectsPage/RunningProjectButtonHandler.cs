@@ -48,7 +48,7 @@ namespace UI.DevPage.RunningProjectsPage
         public void Initialize(IButtonInfo buttonInfo)
         {
             var projectButtonInfo = buttonInfo as Project;
-            gameObject.name += $" {projectButtonInfo.Name}";
+            gameObject.name += $" {projectButtonInfo!.Name}";
             ButtonInfo = projectButtonInfo;
         }
 

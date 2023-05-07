@@ -9,7 +9,7 @@ namespace UI.DevPage.NewProjectsPage
     public class DevPageNewProjectHandler : MonoBehaviour
     {
         // This is temporary, This should be set somewhere else. 
-        private List<Project> _possibleProjects = new()
+        private readonly List<Project> _possibleProjects = new()
         {
             new("Among us", new ProjectFractionRequirement(0, 1), Color.green)
             {

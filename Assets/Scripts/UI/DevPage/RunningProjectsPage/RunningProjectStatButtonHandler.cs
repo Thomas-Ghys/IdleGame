@@ -4,42 +4,35 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RunningProjectStatButtonHandler : MonoBehaviour, IButtonInfoHandler
+namespace UI.DevPage.RunningProjectsPage
 {
-    [SerializeField] private TextMeshProUGUI progressText;
-    [SerializeField] private TextMeshProUGUI text;
-
-    private ProjectStat _buttonInfo;
-    private Button _button;
-
-    public IButtonInfo ButtonInfo
+    public class RunningProjectStatButtonHandler : MonoBehaviour, IButtonInfoHandler
     {
-        get => _buttonInfo;
-        private set
+        [SerializeField] private TextMeshProUGUI progressText;
+        [SerializeField] private TextMeshProUGUI text;
+
+        private ProjectStat _buttonInfo;
+        private Button _button;
+
+        public IButtonInfo ButtonInfo
         {
-            _buttonInfo = value as ProjectStat;
-            SetButtonAttributes();
+            get => _buttonInfo;
+            private set
+            {
+                _buttonInfo = value as ProjectStat;
+                SetButtonAttributes();
+            }
         }
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+        private void SetButtonAttributes()
+        {
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    private void SetButtonAttributes()
-    {
-    }
-
-    public void Initialize(IButtonInfo buttonInfo)
-    {
-        ButtonInfo = buttonInfo as ProjectStat;
-        text.text = _buttonInfo.Name;
-        progressText.text = _buttonInfo.Value.ToString();
+        public void Initialize(IButtonInfo buttonInfo)
+        {
+            ButtonInfo = buttonInfo as ProjectStat;
+            text.text = _buttonInfo.Name;
+            progressText.text = _buttonInfo.Value.ToString();
+        }
     }
 }
